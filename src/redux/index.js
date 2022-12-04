@@ -1,20 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit'
+import redux  from "redux"
 
 // 1. ACTION CREATORS
-function increment(){
+export function increment(){
   return {
     type: 'INCREMENT'
   }
 }
 
-function decrement(){
+export function decrement(){
   return {
     type: 'DECREMENT'
   }
 }
 
 // 2. REDUCERS
-function incrementReducer(count = 0, action) {
+function reducer(count = 0, action) {
   switch(action.type) {
     case "INCREMENT":
       return count + 1
@@ -26,7 +27,7 @@ function incrementReducer(count = 0, action) {
 };
 
 // 3. Create a new REDUX STORE
-const store = createStore(reducer)
+const store = configureStore(reducer) 
 
 // 4. Set up the SUBSCRIBE function to see changes in the STORE
 store.subscribe(() => console.log(store.getState()))
