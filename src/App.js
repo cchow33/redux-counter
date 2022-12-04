@@ -1,22 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
-import {connect} from 'react-redux';
-
-// Connect
-// connect ('What parts of state do you want?', 'What actions do you want to dispatch?') (Component)
-
-// connect (mapStateToPropsFunc, mapDispatchToPropsFunc) (Component)
+import {useSelect} from 'react-redux';
+import {increment, decrement} from './redux'
 
 function App(props) {
   return (
     <div>
-      <h1>Count Goes Here</h1>
-      <button>-</button>
-      <button>+</button>
+      <h1>Redux Counter</h1>
+        <h1>{props.count}</h1>
+        <button onClick={props.increment}>-</button>
+        <button onClick={props.decrement}>+</button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
